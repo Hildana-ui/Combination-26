@@ -51,14 +51,15 @@ Hash Map per frame
 
 Optional Linked List for scope traversal
 
-🚀 How to Run (Problem 21: Real-Time Median Monitor)
-____________________________________________________________________________
+🚀 How to Run 
+______________________________________________________________________________
+(Problem 21: Real-Time Median Monitor)
 In the terminal:
-▶️ Compile
-javac MedianMonitor.java
+   ▶️ Compile
+      javac MedianMonitor.java
 
-▶️ Run
-java MedianMonitor
+   ▶️ Run
+      java MedianMonitor
 
 💬 CLI Commands
 Command	Description
