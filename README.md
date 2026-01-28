@@ -56,6 +56,7 @@ ______________________________________________________________________________
 (Problem 21: Real-Time Median Monitor)
 
 In the terminal:
+
 ▶️ Compile
 
   javac MedianMonitor.java
