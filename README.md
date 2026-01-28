@@ -8,7 +8,6 @@ The goal of these projects is to demonstrate:
 - Practical CLI-based interaction
 - Clear state visualization and debugging
 
-📁 Problems Included
 
 🔹 Problem 21: Real-Time Median Monitor 
 ______________________________________________________________________________________
@@ -66,8 +65,9 @@ In the terminal:
   java MedianMonitor
 
 💬 CLI Commands
+
 Command	Description
-ADD <value>	- Inserts a number into the data stream
-MEDIAN	- Prints the current median
-DEBUG	- Shows contents of both heaps
-EXIT	- Terminates the program
+- ADD <value>	- Inserts a number into the data stream
+- MEDIAN	- Prints the current median
+- DEBUG	- Shows contents of both heaps
+- EXIT	- Terminates the program
