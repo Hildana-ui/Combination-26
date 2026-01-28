@@ -55,11 +55,11 @@ Optional Linked List for scope traversal
 ______________________________________________________________________________
 (Problem 21: Real-Time Median Monitor)
 In the terminal:
-   ▶️ Compile
-      javac MedianMonitor.java
+▶️ Compile
+   javac MedianMonitor.java
 
-   ▶️ Run
-      java MedianMonitor
+▶️ Run
+   java MedianMonitor
 
 💬 CLI Commands
 Command	Description
