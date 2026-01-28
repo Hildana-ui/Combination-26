@@ -57,10 +57,12 @@ ______________________________________________________________________________
 
 In the terminal:
 ▶️ Compile
-javac MedianMonitor.java
+
+  javac MedianMonitor.java
 
 ▶️ Run
-java MedianMonitor
+
+  java MedianMonitor
 
 💬 CLI Commands
 Command	Description
