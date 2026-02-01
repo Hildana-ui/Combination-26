@@ -1,0 +1,110 @@
+class Node:
+    def __init__(self, name):
+        self.name = name
+        self.prev = None
+        self.next = None
+
+
+class WaitingList:
+    def __init__(self):
+        self.head = None
+        self.tail = None
+        self.map = {}   # name -> Node
+
+    # ARRIVE regular customer
+    def arrive(self, name):
+        new_node = Node(name)
+        self.map[name] = new_node
+
+        if self.head is None:
+            self.head = self.tail = new_node
+        else:
+            self.tail.next = new_node
+            new_node.prev = self.tail
+            self.tail = new_node
+
+    # ARRIVE VIP customer
+    def arrive_vip(self, name):
+        new_node = Node(name)
+        self.map[name] = new_node
+
+        if self.head is None:
+            self.head = self.tail = new_node
+        else:
+            new_node.next = self.head
+            self.head.prev = new_node
+            self.head = new_node
+
+    # LEAVE by name
+    def leave(self, name):
+        if name not in self.map:
+            print(f"{name} not found in line.")
+            return
+
+        node = self.map.pop(name)
+
+        if node.prev:
+            node.prev.next = node.next
+        else:
+            self.head = node.next
+
+        if node.next:
+            node.next.prev = node.prev
+        else:
+            self.tail = node.prev
+
+    # SEAT front person
+    def seat(self):
+        if not self.head:
+            print("No one to seat.")
+            return
+
+        person = self.head
+        print(f"Seating {person.name}.")
+        self.leave(person.name)
+
+    # SHOW_LINE
+    def show_line(self):
+        if not self.head:
+            print("Line is empty.")
+            return
+
+        current = self.head
+        line = []
+        while current:
+            line.append(current.name)
+            current = current.next
+
+        print("Line: " + " -> ".join(line))
+
+
+# ----------------------------
+# Test snippet
+# ----------------------------
+if __name__ == "__main__":
+    line = WaitingList()
+
+    # Sample execution
+    line.arrive("A")
+    line.arrive("B")
+    line.show_line()  # Line: A -> B
+
+    line.arrive_vip("V1")
+    line.show_line()  # Line: V1 -> A -> B
+
+    line.leave("A")
+    line.show_line()  # Line: V1 -> B
+
+    line.seat()       # Seating V1
+    line.show_line()  # Line: B
+
+    # Add a few more to test
+    line.arrive("C")
+    line.arrive_vip("V2")
+    line.show_line()  # Line: V2 -> B -> C
+
+    line.leave("B")
+    line.show_line()  # Line: V2 -> C
+
+    line.seat()       # Seating V2
+    line.show_line()  # Line: C
