@@ -71,3 +71,8 @@ Command	Description
 - MEDIAN	- Prints the current median
 - DEBUG	- Shows contents of both heaps
 - EXIT	- Terminates the program
+__________________________________________________________________________
+Group Members
+1. Diya Hussien
+2. Eyerus Tefera
+3. Hildana Amare
