@@ -9,8 +9,9 @@ class WaitingList:
     def __init__(self):
         self.head = None
         self.tail = None
-        self.map = {}   # name -> Node
+        self.map = {}  
 
+    
     def arrive(self, name):
         new_node = Node(name)
         self.map[name] = new_node
@@ -22,6 +23,7 @@ class WaitingList:
             new_node.prev = self.tail
             self.tail = new_node
 
+    
     def arrive_vip(self, name):
         new_node = Node(name)
         self.map[name] = new_node
@@ -32,6 +34,7 @@ class WaitingList:
             new_node.next = self.head
             self.head.prev = new_node
             self.head = new_node
+
 
     def leave(self, name):
         if name not in self.map:
@@ -50,6 +53,7 @@ class WaitingList:
         else:
             self.tail = node.prev
 
+
     def seat(self):
         if not self.head:
             print("No one to seat.")
@@ -59,19 +63,20 @@ class WaitingList:
         print(f"Seating {person.name}.")
         self.leave(person.name)
 
+    
     def show_line(self):
         if not self.head:
             print("Line is empty.")
             return
 
         current = self.head
-        result = []
-
+        line = []
         while current:
-            result.append(current.name)
+            line.append(current.name)
             current = current.next
 
-        print("Line: " + " -> ".join(result))
+        print("Line: " + " -> ".join(line))
+
 if __name__ == "__main__":
     line = WaitingList()
 
@@ -83,26 +88,26 @@ if __name__ == "__main__":
         if not command:
             continue
 
-        if command == "EXIT":
+        if command.upper() == "EXIT":
             break
 
         parts = command.split()
+        cmd = parts[0].upper()
 
-        if parts[0] == "ARRIVE" and len(parts) == 2:
+        if cmd == "ARRIVE" and len(parts) == 2:
             line.arrive(parts[1])
 
-        elif parts[0] == "ARRIVE_VIP" and len(parts) == 2:
+        elif cmd == "ARRIVE_VIP" and len(parts) == 2:
             line.arrive_vip(parts[1])
 
-        elif parts[0] == "LEAVE" and len(parts) == 2:
+        elif cmd == "LEAVE" and len(parts) == 2:
             line.leave(parts[1])
 
-        elif parts[0] == "SEAT":
+        elif cmd == "SEAT":
             line.seat()
 
-        elif parts[0] == "SHOW_LINE":
+        elif cmd == "SHOW_LINE":
             line.show_line()
 
         else:
             print("Invalid command.")
-
